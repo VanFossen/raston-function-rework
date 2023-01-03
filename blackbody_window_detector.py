@@ -19,7 +19,7 @@ def __sPlanck(spectrum, temp):
                 data (int): the range of x-values for the spectrum
 
             Returns:
-                The Blackbosy Spectrum
+                The Blackbody Spectrum
     """
 
     H = 6.62606957e-34
@@ -81,7 +81,7 @@ def __sapphire(data):
 
 def __AR_ZnSe(data):
     """
-    Returns a function that approximates a AR_ZnSe Beamsplitter.
+    Returns a function that approximates a AR_ZnSe beamsplitter.
 
             Parameters:
                 data (int): the range of x-values for the function
