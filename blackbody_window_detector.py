@@ -1,25 +1,25 @@
-from radis import calc_spectrum, Spectrum, SerialSlabs
-from radis.spectrum.operations import add_array, multiply
-
-from specutils import SpectralRegion
-from specutils.manipulation import noise_region_uncertainty
-from specutils.fitting import find_lines_threshold, find_lines_derivative
-
 import astropy.units as u
 import numpy as np
+from radis import SerialSlabs, Spectrum, calc_spectrum
+from radis.spectrum.operations import add_array, multiply
+from specutils.fitting import find_lines_derivative, find_lines_threshold
+from specutils.manipulation import noise_region_uncertainty
+
+# NOTE docstrings need to be reworked
+# -----------------------------------
 
 # -------------------------------------
 # ------------- blackbody -------------
 # -------------------------------------
-def __sPlanck(spectrum, temp):
+def __sPlanck(spectrum, source_temp):
     """
-    Returns a function that generates a Blackbody Spectrum.
+    When given an x-value from a spectrum, the associated y-value of a Blackbody spectrum is calculated.
 
             Parameters:
-                data (int): the range of x-values for the spectrum
+                spectrum: an x-value of a spectrum
 
             Returns:
-                The Blackbody Spectrum
+                The y-value of a Blackbody spectrum
     """
 
     H = 6.62606957e-34
@@ -27,7 +27,7 @@ def __sPlanck(spectrum, temp):
     K_B = 1.3806488e-23
 
     return ((0.2 * H * (C**2)) / (((spectrum * (10**-9)) ** 4) * spectrum)) * (
-        1 / (np.exp((H * C) / ((spectrum * (10**-9)) * K_B * temp)) - 1)
+        1 / (np.exp((H * C) / ((spectrum * (10**-9)) * K_B * source_temp)) - 1)
     )
 
 
