@@ -45,11 +45,11 @@ def __param_check(data):
 
 def __calc_wstep(resolution, zero_fill):
     """
-    Calculates the apropriate wstep for a spectrum based on the given resolution and zero fill.
+    Calculates the appropriate wstep for a spectrum based on the given resolution and zero fill.
 
         Parameters:
             resolution (int): the given resolution
-            xero_fill (int): the given zero fill
+            zero_fill (int): the given zero fill
 
         Returns:
             The calculated wstep
@@ -57,44 +57,51 @@ def __calc_wstep(resolution, zero_fill):
 
     match resolution:
         case 1:
-            if zero_fill == 0:
-                wstep = 0.481927711
-            elif zero_fill == 1:
-                wstep = 0.240963855
-            elif zero_fill == 2:
-                wstep = 0.120481928
+            match zero_fill:
+                case 0:
+                    wstep = 0.481927711
+                case 1:
+                    wstep = 0.240963855
+                case 2:
+                    wstep = 0.120481928
 
         case 0.5:
-            if zero_fill == 0:
-                wstep = 0.240963855
-            elif zero_fill == 1:
-                wstep = 0.120481928
-            elif zero_fill == 2:
-                wstep = 0.060240964
+            match zero_fill:
+                case 0:
+                    wstep = 0.240963855
+
+                case 1:
+                    wstep = 0.120481928
+
+                case 2:
+                    wstep = 0.060240964
 
         case 0.25:
-            if zero_fill == 0:
-                wstep = 0.120481928
-            elif zero_fill == 1:
-                wstep = 0.060240964
-            elif zero_fill == 2:
-                wstep = 0.030120482
+            match zero_fill:
+                case 0:
+                    wstep = 0.120481928
+                case 1:
+                    wstep = 0.060240964
+                case 2:
+                    wstep = 0.030120482
 
         case 0.125:
-            if zero_fill == 0:
-                wstep = 0.060240964
-            elif zero_fill == 1:
-                wstep = 0.030120482
-            elif zero_fill == 2:
-                wstep = 0.015060241
+            match zero_fill:
+                case 0:
+                    wstep = 0.060240964
+                case 1:
+                    wstep = 0.030120482
+                case 2:
+                    wstep = 0.015060241
 
         case 0.0625:
-            if zero_fill == 0:
-                wstep = 0.030120482
-            elif zero_fill == 1:
-                wstep = 0.015060241
-            elif zero_fill == 2:
-                wstep = 0.00753012
+            match zero_fill:
+                case 0:
+                    wstep = 0.030120482
+                case 1:
+                    wstep = 0.015060241
+                case 2:
+                    wstep = 0.00753012
 
     return wstep
 
