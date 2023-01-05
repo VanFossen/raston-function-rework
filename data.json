@@ -1,6 +1,6 @@
 {
-  "minWave": 1900,
-  "maxWave": 2300,
+  "minWave": 400,
+  "maxWave": 9944,
   "molecule": "CO",
   "pressure": 0.01,
   "resolution": 1,
